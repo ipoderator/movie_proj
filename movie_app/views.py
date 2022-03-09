@@ -7,4 +7,3 @@ def show_all_movie(request):
     return render(request, 'movie_app/all_movie.html', {
       'movies' : movies  
     })
-a = 'asdjskdlakskld'
