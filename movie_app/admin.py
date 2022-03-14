@@ -3,10 +3,13 @@ from locale import currency
 from re import search
 from turtle import title
 from django.contrib import admin,messages
-from .models import Movie
+from .models import Movie, Director
 from django.contrib.auth.models import User
 from django.db.models import QuerySet 
+
 # Register your models here.
+
+admin.site.register(Director)
 
 
 class RatingFilter(admin.SimpleListFilter):
@@ -33,8 +36,8 @@ class RatingFilter(admin.SimpleListFilter):
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
-    list_display = ['name', 'rating', 'year','badget', 'rating_status','currency']
-    list_editable = ['rating', 'year','badget','currency']
+    list_display = ['name', 'rating', 'badget', 'rating_status','currency']
+    list_editable = ['rating','badget','currency']
     list_per_page = 10
     actions = ['set_dollars','set_euro']
     search_fields = ['name', 'rating']
