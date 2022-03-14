@@ -32,6 +32,7 @@ class RatingFilter(admin.SimpleListFilter):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name', )}
     list_display = ['name', 'rating', 'year','badget', 'rating_status','currency']
     list_editable = ['rating', 'year','badget','currency']
     list_per_page = 10
